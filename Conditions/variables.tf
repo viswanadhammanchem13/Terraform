@@ -57,5 +57,5 @@ variable "SG_tags" {
 }
 
 variable "Environment"{
-    default= "Dev"
+    default= "Prod"
 }
