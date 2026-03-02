@@ -18,7 +18,7 @@ variable "EC2_tags" {
 }
 
 variable "sg_name" {
-    # default = "Vars-Files-Practice"
+    default = "Practice"
 }
 
 variable "sg_description" {
@@ -54,4 +54,8 @@ variable "SG_tags" {
         Name = "Practice" 
 
     }
+}
+
+variable "Environment"{
+    default= "Dev"
 }

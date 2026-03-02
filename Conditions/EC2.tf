@@ -2,8 +2,7 @@
 resource "aws_instance" "roboshop" {
   ami = var.ami_id # clLeft and right side name no need to be same
   vpc_security_group_ids = [ aws_security_group.Allow_All.id ]
-  instance_type = var.instance_type
-
+  instance_type = var.Environment == "Dev" ? "t3.micro" : "t3.small"
   tags = var.EC2_tags
 }
 resource "aws_security_group" "Allow_All" {
