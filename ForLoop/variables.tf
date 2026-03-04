@@ -62,6 +62,12 @@ variable "Environment"{
 
 variable "instance"{
     default = [ "mongodb","mysql","reddis","rabbitmq" ]
+    # default = {
+        # mongodb = "t3.micro"
+        # reddis = "t3.micro"
+        # mysql = "t3.small"
+        # rabbitmq = "t3.micro"
+    # }
 }
 
 variable "zone_id"{

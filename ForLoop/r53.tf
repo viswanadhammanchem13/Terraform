@@ -1,9 +1,12 @@
 resource "aws_route53_record" "roboshop" {
-    count = 4
+    for_each = aws_instance.roboshop
+     # count = 4
     zone_id = var.zone_id
-    name    = "${var.instance[count.index]}.${var.domain_name}"
+    name    = "${each.key}.${var.domain_name}"
+    # name  = "${var.instance[count.index]}.${var.domain_name}"
     type    = "A"
     ttl     = 1
-    records = [aws_instance.roboshop[count.index].private_ip]
+    records = [each.value.private_ip]
+    # records = [aws_instance.roboshop[count.index].private_ip]
     allow_overwrite = true
 }

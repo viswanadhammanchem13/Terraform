@@ -1,11 +1,13 @@
 
 resource "aws_instance" "roboshop" {
-  count=4
+  for_each = toset(var.instance)
+  # count = 4
   ami = var.ami_id # clLeft and right side name no need to be same
   vpc_security_group_ids = [ aws_security_group.Allow_All.id ]
   instance_type = var.Environment == "Dev" ? "t3.micro" : "t3.small"
   tags = {
-    Name = var.instance[count.index]
+    Name = each.key
+    # Name = var.instance[count.index]
   }
 }
 resource "aws_security_group" "Allow_All" {
