@@ -1,5 +1,6 @@
 
 resource "aws_instance" "roboshop" {
+  count = var.length(count.index)
   ami = var.ami_id # clLeft and right side name no need to be same
   vpc_security_group_ids = [ aws_security_group.Allow_All.id ]
   instance_type = var.instance_type
